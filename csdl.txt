@@ -200,9 +200,6 @@ values('888665555', '20', NULL)
 alter table NhanVien
 add Quequan nvarchar(100)
 
-select *
-from NhanVien
-
 update NhanVien
 set quequan = N'Cần Thơ'
 where MaNV like '123456789'
@@ -235,12 +232,7 @@ select MaNV, TenNV, year(CURRENT_TIMESTAMP) - year(NgSinh) as 'Tuoi'
 from NhanVien
 where  year(CURRENT_TIMESTAMP) - year(NgSinh) between 40 and 60
 
-select *
-from NhanVien
 
-
-select getdate(), NgSinh, year(getdate()) - year(NgSinh)
-from NhanVien
 
 
 
