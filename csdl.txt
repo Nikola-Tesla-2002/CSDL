@@ -196,3 +196,53 @@ insert into PhanCong(MaNV, MaDA, ThoiGian)
 values('987654321', '20', 15.0)
 insert into PhanCong(MaNV, MaDA, ThoiGian)
 values('888665555', '20', NULL)
+
+alter table NhanVien
+add Quequan nvarchar(100)
+
+select *
+from NhanVien
+
+update NhanVien
+set quequan = N'Cần Thơ'
+where MaNV like '123456789'
+
+
+alter table NhanVien
+add TinhTrangGD nvarchar(50)
+
+alter table NhanVien
+alter column TinhTrangGD int
+
+alter table NhanVien
+add hsl float
+
+alter table NhanVien
+drop column hsl
+
+drop database QUANLIDUANNHANVIEN
+
+select MaNV, TenNV
+from NhanVien
+where MaPhong like '4' and Phai like 'Nam'
+
+select MaNV, (HoNV + ' ' +TenLot +' ' + TenNV) as 'HoVaTen'
+from NhanVien
+where MaPhong = 1 or Phai = 'Nu'
+
+
+select MaNV, TenNV, year(CURRENT_TIMESTAMP) - year(NgSinh) as 'Tuoi'
+from NhanVien
+where  year(CURRENT_TIMESTAMP) - year(NgSinh) between 40 and 60
+
+select *
+from NhanVien
+
+
+select getdate(), NgSinh, year(getdate()) - year(NgSinh)
+from NhanVien
+
+
+
+
+
