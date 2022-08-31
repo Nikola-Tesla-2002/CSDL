@@ -1,3 +1,21 @@
+select *
+from DeAn
+
+select *
+from DiaDiemPhong
+
+select *
+from NhanVien
+
+select *
+from PhanCong
+
+select *
+from PhongBan
+
+select *
+from ThanNhan
+
 create database QUANLIDUANNHANVIEN
 go
 use QUANLIDUANNHANVIEN
