@@ -249,6 +249,25 @@ select MaNV, concat(HoNV ,' ' ,TenLot ,' ' , TenNV) as 'HoVaTen'
 from NhanVien
 where MaNV not like '[9]%'
 
+select MaNV, concat(HoNV ,' ' ,TenLot ,' ' + TenNV) as 'HoVaTen' , Phai, pb.MaPhong, TenPhong
+from NhanVien nv, PhongBan pb
+where nv.MaPhong = pb.MaPhong and pb.MaPhong like '5' and concat(HoNV ,' ' ,TenLot ,' ' + TenNV) like 't%' and year(NgSinh) > 50
+
+
+select MaNV, TenNV, Quequan, TenPhong
+from NhanVien nv, PhongBan pb
+where nv.MaPhong = pb.MaPhong and Quequan is Null
+
+select MaNV, TenNV, Quequan, TenPhong
+from NhanVien nv, PhongBan pb
+where nv.MaPhong = pb.MaPhong and Ma_NQL is Null
+
+
+select MaNV, TenNV, Quequan, TenPhong, NgSinh, year(CURRENT_TIMESTAMP) - year(NgSinh) as 'Tuoi'
+from NhanVien nv, PhongBan pb
+where nv.MaPhong = pb.MaPhong and TenPhong not in ('Quan Ly', 'Dieu Hanh')
+order by year(CURRENT_TIMESTAMP) - year(NgSinh) asc
+
 
 
 
