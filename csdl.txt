@@ -237,6 +237,19 @@ select MaNV, concat(HoNV ,' ' ,TenLot ,' ' + TenNV) as 'HoVaTen'
 from NhanVien
 where concat(HoNV ,' ' ,TenLot ,' ' + TenNV) like '%thanh%'
 
+select MaNV, concat(HoNV ,' ' ,TenLot ,' ' , TenNV) as 'HoVaTen' 
+from NhanVien
+where MaNV like '9_%'
+
+select MaNV, concat(HoNV ,' ' ,TenLot ,' ' , TenNV) as 'HoVaTen' 
+from NhanVien
+where MaNV like '[^9]%'
+
+select MaNV, concat(HoNV ,' ' ,TenLot ,' ' , TenNV) as 'HoVaTen' 
+from NhanVien
+where MaNV not like '[9]%'
+
+
 
 
 
