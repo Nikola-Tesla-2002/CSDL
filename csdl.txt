@@ -268,6 +268,23 @@ from NhanVien nv, PhongBan pb
 where nv.MaPhong = pb.MaPhong and TenPhong not in ('Quan Ly', 'Dieu Hanh')
 order by year(CURRENT_TIMESTAMP) - year(NgSinh) asc
 
+select MaNV, TenNV, Quequan, TenPhong, NgSinh, year(CURRENT_TIMESTAMP) - year(NgSinh) as 'Tuoi'
+from NhanVien nv, PhongBan pb
+where nv.MaPhong = pb.MaPhong and NgSinh = 
+(
+select min(NgSinh)
+from NhanVien 
+)
+
+select MaNV, TenNV, Quequan,year(CURRENT_TIMESTAMP) - year(NgSinh) as 'Tuoi', TenPhong
+from NhanVien nv, PhongBan pb
+where nv.MaPhong = pb.MaPhong and pb.TenPhong in ('Quan Ly', 'Dieu Hanh')
+order by year(CURRENT_TIMESTAMP) - year(NgSinh), pb.MaPhong desc
+
+select TenPhong,  count(*) as 'SoLuong'
+from NhanVien nv, PhongBan pb
+where nv.MaPhong = pb.MaPhong
+group by TenPhong
 
 
 
