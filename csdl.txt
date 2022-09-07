@@ -232,13 +232,10 @@ select MaNV, TenNV, year(CURRENT_TIMESTAMP) - year(NgSinh) as 'Tuoi'
 from NhanVien
 where  year(CURRENT_TIMESTAMP) - year(NgSinh) between 40 and 60
 
-select *
-from
-(
+
 select MaNV, concat(HoNV ,' ' ,TenLot ,' ' + TenNV) as 'HoVaTen' 
 from NhanVien
-) as temp
-where lower(HoVaTen) like '%thanh%'
+where concat(HoNV ,' ' ,TenLot ,' ' + TenNV) like '%thanh%'
 
 
 
