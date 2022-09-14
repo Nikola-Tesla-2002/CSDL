@@ -288,6 +288,47 @@ group by TenPhong
 
 
 
+select MaNV, TenNV, NgSinh, Phai
+from NhanVien nv
+where nv.MaNV in (SELECT DISTINCT TG1.MaNV 
+FROM PhanCong TG1 
+WHERE not EXISTS (
+                  ( SELECT MaDA FROM DeAn) 
+                    EXCEPT
+                    ( SELECT MaDA
+                    FROM PhanCong TG2
+                    WHERE TG2.MaNV = TG1.MaNV ) ))
+
+
+--pivot
+select MaNV, [1], [2], [3], [10], [20], [30] 
+from (select MaNV, pc.ThoiGian, da.MaDA
+		from PhanCong as pc
+		inner join DeAn da on da.MaDA = pc.MaDA
+		) as temp
+pivot
+(
+	sum(temp.ThoiGian) for temp.MaDA in ([1], [2], [3], [10], [20], [30])
+)
+as pivotTable
+
+
+select MaNV, [1], [2], [3], [10], [20], [30] 
+from (select MaNV, da.MaDA
+		from PhanCong as pc
+		inner join DeAn da on da.MaDA = pc.MaDA
+		) as temp
+pivot
+(
+	count(temp.MaDA) for temp.MaDA in ([1], [2], [3], [10], [20], [30])
+)
+as pivotTable
+
+select *
+from PhanCong
+
+
+
 
 
 
