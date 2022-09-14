@@ -329,6 +329,22 @@ from PhanCong
 
 
 
+create function tinhtuoi(@datetime datetime)
+returns int
+as
+begin
+	declare @result int
+	set @result = year(getdate()) - year(@datetime)
+	return @result
+	
+end
+go
+
+select TenNV, dbo.tinhtuoi(NgSinh) as 'Tuoi'
+from NhanVien
+
+
+
 
 
 
