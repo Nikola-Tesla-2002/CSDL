@@ -344,6 +344,24 @@ select TenNV, dbo.tinhtuoi(NgSinh) as 'Tuoi'
 from NhanVien
 
 
+create function MaxAge()
+returns int
+as
+begin
+	declare @result int
+	select top 1 @result = dbo.tinhtuoi(NgSinh)
+	from NhanVien
+	order by dbo.tinhtuoi(NgSinh) desc
+	return @result
+end
+go
+
+select TenNV, MaNV, dbo.tinhtuoi(NgSinh) as 'Tuoi'
+from NhanVien
+where dbo.tinhtuoi(NgSinh)= dbo.MaxAge()
+
+
+
 
 
 
